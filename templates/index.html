@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+
+{% block extraImports %}
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='index.css')}}/>
+
+    <script src = {{ url_for('static', filename='index.js') }}></script>
+
+{% endblock extraImports %}
+
+{% block content %}
+    <!-- TODO: Ivan, add a better loading screen (like the MIT one or something idk -->
+    <!-- background video -->
+    <video autoplay="true" id="backgroundVideo">
+
+    </video>
+    <div class="container">
+        <div id ="welcomecard">
+            <h1> Welcome to {{ TITLE }} !!</h1>
+            <p>  Select what language you want to learn... </p>
+
+            <!-- TODO: Jesse, fix this please -->
+            <!-- language select from -->
+            <form id = "languageForm" onSubmit="handleLanguageForm(); return false;">
+                <select name="language">
+                    <option value="es"> Spanish </option>
+                    <option value="abc"> Some other language idk </option>
+                </select>
+                <br>
+                <input type="submit" value="Learn!!!"/>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
