@@ -4,30 +4,40 @@
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='index.css')}}/>
 
     <script src = {{ url_for('static', filename='index.js') }}></script>
-
+    <script>function bulbasaur() {
+        var x = document.getElementById("bulbasaur");
+        if (x.style.display === "none") {
+ 	        x.style.display = "block";
+        } else {
+ 	        x.style.display = "none";
+        }
+      }
+ </script>
 {% endblock extraImports %}
 
 {% block content %}
     <!-- TODO: Ivan, add a better loading screen (like the MIT one or something idk -->
     <!-- background video -->
+    <div id ="welcomecard" class="container">
+        <h1> Welcome to {{ TITLE }} !!</h1>
+        <p>  Select what language you want to learn... </p>
+
+        <!-- TODO: Jesse, fix this please -->
+        <!-- language select from -->
+        <form id = "languageForm" onSubmit="handleLanguageForm(); return false;">
+            <select name="language">
+                <option value="es"> Spanish </option>
+                <option value="abc"> Some other language idk </option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Learn!!!"/>
+        </form>
+    </div>
+
     <video autoplay="true" id="backgroundVideo">
 
     </video>
-    <div class="container">
-        <div id ="welcomecard">
-            <h1> Welcome to {{ TITLE }} !!</h1>
-            <p>  Select what language you want to learn... </p>
 
-            <!-- TODO: Jesse, fix this please -->
-            <!-- language select from -->
-            <form id = "languageForm" onSubmit="handleLanguageForm(); return false;">
-                <select name="language">
-                    <option value="es"> Spanish </option>
-                    <option value="abc"> Some other language idk </option>
-                </select>
-                <br>
-                <input type="submit" value="Learn!!!"/>
-            </form>
-        </div>
-    </div>
+
 {% endblock content %}

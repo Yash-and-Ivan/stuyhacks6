@@ -1,18 +1,23 @@
 #welcomecard {
     /* TODO: Jesse, make this style better thanks */
-    position: fixed;
-
     top: 40%;
-    left: 30%;
 
+    text-align: center;
     background: #EEEEEE;
-    width: 40%;
-
+    width: 30%;
+    height: 30%;
     border-style: solid;
     border-color: black;
     border-width: 2px;
 
 }
+
+#languageForm{
+  padding-top: 30px;
+  padding: 5px:
+}
+
+
 #backgroundVideo {
     position: absolute;
     left: -10%;
@@ -27,6 +32,7 @@
 
     /* TODO: Jesse, figure out what setting for this filter looks the best, I think there are some other filters you can use too...*/
     filter: blur(50px);
+    filter: 
 }
 
 body {
