@@ -42,8 +42,8 @@ analyzeCurrent = function(){
               "</tr>";
           for(var i = 0; i < words.length; i++){
             wordTable += "<tr>" +
-                "<td><center>" + words[i][0] + "</center></td>" +
-                "<td><center>" + words[i][1] + "</center></td>" +
+                "<td onclick=\"window.open('https://www.google.com/search?q=" + words[i][0] +"')\"><center>" + words[i][0] + "</center></td>" +
+                "<td><center><div class='tooltip'>" + words[i][1] + "<span class='tooltiptext'>"+words[i][2]+"</span></div></center></td>" +
                 "</tr>"
           }
           wordTable += "</table>"
@@ -58,12 +58,34 @@ analyzeCurrent = function(){
           }
           colorIndex += "</tr><tr>"
           for(i = 0; i < 5; i++){
-              colorIndex += "<td><center>"+ imageColors[i][0] + "<br>"+ imageColors[i][1] + "</center></td>"
+              colorIndex += "<td><center>"+ imageColors[i][0] + "<br><div class='tooltip'>"+ imageColors[i][1] + "<span class='tooltiptext'>"+imageColors[i][3]+"</span></div></center></td>"
           }
           colorIndex += "</tr></table>"
 
 
           insertHTML += colorIndex;
+
+          //related words
+          insertHTML += "<center><h1>Common Phrases</h1></center>"
+
+          var relatedAdjectives = data["relatedwords"]
+          console.log(relatedAdjectives)
+
+          insertHTML += "<p>"
+
+          for(var i = 0; i < relatedAdjectives.length; i++){
+              var curWords = relatedAdjectives[i][1]
+
+              for(var j = 0; j < curWords.length; j++){
+                  insertHTML += "<div class='tooltip'>" + curWords[j][0]+ "<span class='tooltiptext'>" + curWords[j][1] + " / " + curWords[j][2] + "</span></div>"+ ", "
+
+              }
+              if(curWords.length != 0){
+                  insertHTML += "<br>"
+              }
+          }
+
+          insertHTML += "</p>"
 
           insertHTML += "<button id='#doneButton' onclick = 'resetAnalysis()'> I'm Done. Take Me Back.</button>"
 

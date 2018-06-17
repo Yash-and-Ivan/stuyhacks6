@@ -10,6 +10,8 @@ from googletrans import Translator
 import webcolors
 import wordninja
 import os
+from nltk import word_tokenize, pos_tag
+import urllib.request
 
 
 app = Flask(__name__)
@@ -56,8 +58,13 @@ def analyze(lang=None):
     for c in colors:
         print(c)
 
-    response["imagelabels"] = [[label.description, translator.translate(label.description, dest=lang, ).text] for label in labels]
+    response["imagelabels"] = [[label.description, translator.translate(label.description, dest=lang).text,
+                                translator.translate(translator.translate(label.description, dest=lang).text, dest=lang).pronunciation] for label in labels]
     response["imagecolors"] = []
+    response["nouns"] = [label.description for label in labels if isNoun(label.description)]
+    response["relatedwords"] = [[label.description, [[word + " " + label.description, translator.translate(word + " " + label.description, dest=lang).text,
+                                                      (translator.translate(translator.translate(word + " " + label.description, dest=lang).text, dest=lang)).pronunciation]
+                                                     for word in related(label.description)]]for label in labels]
     tempNames = []
     for color in colors:
         r = color.color.red
@@ -73,7 +80,8 @@ def analyze(lang=None):
         if colorName == "or angered":
             colorName = "orange red"
 
-        response["imagecolors"].append([colorName, translator.translate(colorName, dest=lang).text, colorText])
+        response["imagecolors"].append([colorName, translator.translate(colorName, dest=lang).text, colorText,
+                                        translator.translate(translator.translate(colorName, dest=lang).text, dest=lang).pronunciation])
 
     print(response)
 
@@ -89,6 +97,19 @@ def closestColor(requested_colour):
         bd = (b_c - requested_colour[2]) ** 2
         min_colours[(rd + gd + bd)] = name
     return " ".join(wordninja.split(min_colours[min(min_colours.keys())]))
+
+
+def isNoun(word):
+    word = pos_tag(word_tokenize(word))
+    return word[0][1] == "NN"
+
+
+def related(word):
+    word = word.split(" ")[0]
+    data = urllib.request.urlopen("https://api.datamuse.com/words?rel_jjb=" + word).read()
+    data = data.decode('utf8').replace("'", '"')
+    data = json.loads(str(data))
+    return [cur["word"] for cur in data][:min(len(data), 3)]
 
 
 if __name__ == '__main__':
