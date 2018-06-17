@@ -1,9 +1,44 @@
 {% extends '_base.html' %}
 
 {% block extraImports %}
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='learn.css')}}/>
+
+    <script src = {{ url_for('static', filename='learn.js') }}></script>
+    <script src = {{ url_for('static', filename='captureFrame.js') }}></script>
+    <script src = {{ url_for('static', filename='consoleImage.js') }}></script>
 
 {% endblock extraImports %}
 
 {% block content %}
-    <h1> Hey there, you're not learning the language: {{ language }}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="six columns" id="videoColumn">
+                <video autoplay="true" id="backgroundFeed">
+
+                </video>
+                <video autoplay="true" id="videoFeed">
+
+                </video>
+            </div>
+            <div class="six columns" id="analysisColumn">
+                <button onclick="analyzeCurrent();" id="analyzeButton"> Analyze Content </button>
+                <div id = "analysisResults">
+
+                </div>
+                <table width="100%">
+                    <tr>
+                        <td><div class="colorShow""><br></div></td>
+                        <td><div class="colorShow"><br></div></td>
+                        <td><div class="colorShow"><br></div></td>
+                        <td><div class="colorShow"><br></div></td>
+                        <td><div class="colorShow"><br></div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var langname = "{{ fulllanguage }}";
+        var langabr = "{{ language }}"
+    </script>
 {% endblock content %}

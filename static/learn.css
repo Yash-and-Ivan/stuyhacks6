@@ -1,0 +1,62 @@
+.container {
+    width: 100% !important;
+    margin-left: 0% !important;
+    margin-right: 0%; !important;
+    max-width: 100%; !important;
+}
+#videoColumn {
+    background: #bbbbbb;
+    overflow: scroll;
+
+}
+#videoColumn, #analysisColumn {
+    height: 100%;
+    width: 50%;
+    margin: 0%;
+
+    border: solid black 2px;
+
+    box-sizing: border-box;
+}
+body {
+    overflow: hidden;
+}
+#backgroundFeed {
+    width: 50%;
+    height: 100%;
+    object-fit: fill;
+    position: absolute;
+    top: 0%;
+    filter: blur(30px);
+}
+#videoFeed {
+    position: relative;
+
+    top: 50%;
+
+    width: 100%;
+
+    transform: translate(0%, -50%);
+
+    border: solid black 10px;
+
+    box-sizing: border-box;
+
+}
+#analyzeButton{
+    position: absolute;
+
+    width: 40%;
+    height: 10%;
+
+    top: 40%;
+    left: 55%;
+
+}
+#analysisResults{
+    text-align: center;
+}
+.colorShow {
+    position: relative;
+    height: 20%;
+}
