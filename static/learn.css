@@ -8,6 +8,9 @@
     background: #bbbbbb;
     overflow: hidden;
 }
+#analysisColumn{
+    z-index: 100;
+}
 #videoColumn, #analysisColumn {
     height: 100%;
     width: 50%;
@@ -24,16 +27,20 @@ body {
     width: 50%;
     height: 100%;
     object-fit: fill;
-    position: absolute;
+    position: relative;
     top: 0%;
     filter: blur(30px);
+    transform: scale(1.1);
+    overflow: hidden;
 }
 #videoFeed {
-    position: relative;
+    position: absolute;
 
     top: 50%;
 
-    width: 100%;
+    left: 0%;
+
+    width: 50%;
 
     transform: translate(0%, -50%);
 
