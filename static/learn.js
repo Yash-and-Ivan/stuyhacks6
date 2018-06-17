@@ -3,6 +3,7 @@ $(document).ready(function(){
 });
 analyzeCurrent = function(){
     //do button animation
+    document.getElementById("videoFeed").pause();
     $("#analyzeButton").animate({
         opacity: 0,
         top: "-100%"
@@ -116,6 +117,7 @@ function resetAnalysis(){
     $("#analysisResults").animate({
         opacity: 0
     }, 500 , function(){
+        document.getElementById("videoFeed").play();
         $("#analysisResults").html("");
         $("#analyzeButton").css({
             top: "150%",
@@ -125,8 +127,6 @@ function resetAnalysis(){
             top: "40%",
             opacity: 1
         }, 500)
-
-
     })
 }
 function shuffle(a) {
