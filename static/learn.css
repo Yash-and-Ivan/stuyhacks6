@@ -125,7 +125,6 @@ body {
 
     animation-name: rightPanelAnimation;
     animation-duration: 2s;
-    animation-timing-function: linear;
     animation-fill-mode: forwards;
     animation-delay: 1s;
 }
@@ -147,7 +146,6 @@ body {
 
     animation-name: leftPanelAnimation;
     animation-duration: 2s;
-    animation-timing-function: linear;
     animation-fill-mode: forwards;
     animation-delay: 1s;
 }

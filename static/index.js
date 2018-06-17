@@ -24,5 +24,13 @@ handleLanguageForm = function(){
 
     var newUrl = "/learn/" + language;
 
-    window.location.href = newUrl;
+    $("#secondRightPanel").animate({
+        left: "50%"
+    }, 1000)
+    $("#secondLeftPanel").animate({
+        left: "0%"
+    }, 1000, function(){
+        window.location.href = newUrl;
+    })
+
 }

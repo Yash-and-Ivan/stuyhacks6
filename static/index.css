@@ -110,7 +110,7 @@
 
 #languageForm{
   padding-top: 30px;
-  padding: 5px:
+  padding: 5px;
 }
 
 
@@ -173,4 +173,20 @@
 }
 body {
     overflow: hidden;
+}
+#secondRightPanel {
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    width: 50%;
+    height: 100%;
+    background: black;
+}
+#secondLeftPanel {
+    position: absolute;
+    top: 0%;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: black;
 }
