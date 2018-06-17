@@ -6,8 +6,7 @@
 }
 #videoColumn {
     background: #bbbbbb;
-    overflow: scroll;
-
+    overflow: hidden;
 }
 #videoColumn, #analysisColumn {
     height: 100%;
@@ -42,6 +41,7 @@ body {
 
     box-sizing: border-box;
 
+
 }
 #analyzeButton{
     position: absolute;
@@ -59,4 +59,26 @@ body {
 .colorShow {
     position: relative;
     height: 20%;
+}
+#loadingIcon{
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    width: 10%;
+
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    opacity: 0;
+    visibility: hidden;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -7,6 +7,14 @@ analyzeCurrent = function(){
         opacity: 0,
         top: "-100%"
     }, 1000)
+    window.setTimeout(function(){
+        $("#loadingIcon").css({
+            visibility: "visible"
+        })
+        $("#loadingIcon").animate({
+            opacity: 1
+        }, 500)
+    }, 250)
 
     var insertHTML = "";
 
@@ -55,13 +63,50 @@ analyzeCurrent = function(){
           colorIndex += "</tr></table>"
 
 
-          insertHTML += colorIndex
+          insertHTML += colorIndex;
+
+          insertHTML += "<button id='#doneButton' onclick = 'resetAnalysis()'> I'm Done. Take Me Back.</button>"
+
+          $("#analysisResults").css({
+              opacity: 0
+          });
+
 
           $("#analysisResults").html(insertHTML);
+
+          $("#loadingIcon").animate({
+              opacity: 0
+          }, 500, function(){
+              $("#analysisResults").animate({
+                  opacity: 1
+              }, 1000, function(){
+                  $("#loadingIcon").css({
+                      opacity: 0,
+                      visibility: "hidden"
+                  })
+              })
+          })
 
       }
     })
 };
+function resetAnalysis(){
+    $("#analysisResults").animate({
+        opacity: 0
+    }, 500 , function(){
+        $("#analysisResults").html("");
+        $("#analyzeButton").css({
+            top: "150%",
+            opacity: 0
+        })
+        $("#analyzeButton").animate({
+            top: "40%",
+            opacity: 1
+        }, 500)
+
+
+    })
+}
 function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -76,7 +121,10 @@ setUpVideo = function(){
     var videoElement = document.querySelector("#videoFeed");
     var backgroundElement = document.querySelector("#backgroundFeed");
 
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+    navigator.getUserMedia = (navigator.getUserMedia ||
+                            navigator.webkitGetUserMedia ||
+                            navigator.mozGetUserMedia ||
+                            navigator.msGetUserMedia);
 
     if (navigator.getUserMedia) {
     navigator.getUserMedia({video: true}, handleVideo, videoError);

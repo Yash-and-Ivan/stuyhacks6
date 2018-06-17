@@ -1,14 +1,110 @@
 #welcomecard {
     /* TODO: Jesse, make this style better thanks */
-    top: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
     text-align: center;
     background: #EEEEEE;
-    width: 30%;
-    height: 30%;
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
+    width: 40%;
+
+    border: solid black 10px;
+
+    transform: translate(-50%, -50%);
+
+}
+#rightPanel {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 50%;
+    height: 100%;
+
+    background: black;
+
+    border-left: solid white 5px;
+
+    box-sizing: border-box;
+
+    animation-name: rightPanelAnimation;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    animation-timing-function: linear;
+}
+@keyframes rightPanelAnimation {
+    0%{
+        left: 50%;
+    }
+    100%{
+        left: 100%;
+    }
+}
+#leftPanel {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background: black;
+
+    border-right: solid white 5px;
+
+    box-sizing: border-box;
+
+    animation-name: leftPanelAnimation;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    animation-timing-function: linear;
+}
+@keyframes leftPanelAnimation {
+    0%{
+        left: 0%;
+    }
+    100%{
+        left: -50%;
+    }
+}
+
+#panelCircle {
+    z-index: 100;
+    position: absolute;
+
+    width: 10%;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    animation-name: panelCircleAnimation;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+@keyframes panelCircleAnimation {
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg) scale(1.5);
+        left: 50%;
+    }
+    25% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        left: 50%;
+    }
+    50%{
+        transform: translate(-50%, -50%) rotate(90deg);
+        left: 50%;
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(90deg);
+        left: -50%;
+    }
 
 }
 
@@ -31,10 +127,50 @@
     overflow: hidden;
 
     /* TODO: Jesse, figure out what setting for this filter looks the best, I think there are some other filters you can use too...*/
-    filter: blur(50px);
-    filter: 
+    filter: blur(50px) grayscale(50%);
 }
-
+.rainbow {
+    animation-name: rainbow;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes rainbow {
+    0% {
+        color: red;
+    }
+    10% {
+        color: orange;
+    }
+    20% {
+        color: yellow;
+    }
+    30% {
+        color: lawngreen;
+    }
+    40% {
+        color: forestgreen;
+    }
+    50% {
+        color: deepskyblue;
+    }
+    60% {
+        color: dodgerblue;
+    }
+    70%{
+        color: darkblue;
+    }
+    80% {
+        color: mediumpurple;
+    }
+    90% {
+        color: rebeccapurple;
+    }
+    100% {
+        color: deeppink;
+    }
+}
 body {
     overflow: hidden;
 }
