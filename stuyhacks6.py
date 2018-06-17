@@ -13,7 +13,7 @@ import wordninja
 app = Flask(__name__)
 
 #TODO: configurations (move this later lmao)
-APP_NAME = "???"
+APP_NAME = "FluentSee"
 LANGUAGES = {
     'es': 'Spanish',
     'ru': 'Russian',
